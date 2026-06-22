@@ -1,78 +1,262 @@
-# NorthStarAI
+# 🧭 NorthStarAI
 
-**NorthStarAI (Deadline Guardian)** is an AI-powered productivity companion that actively helps users prevent missed deadlines by planning, prioritizing, and scheduling work using Gemini 2.5 Pro.
+### Your AI Productivity Navigator
 
----
+NorthStarAI is an AI-powered productivity companion that helps users plan, prioritize, and complete tasks before deadlines are missed.
 
-## 🌟 Tech Stack
-
-*   **Frontend:** Next.js 15 (App Router), TypeScript, TailwindCSS, Lucide Icons, Recharts
-*   **Backend:** FastAPI (Python), SQLAlchemy (SQLite by default, Firestore ready)
-*   **AI:** Gemini 2.5 Pro (Google AI Studio) & Gemini 2.5 Flash (Vision OCR)
-*   **Integrations:** Google CalendarSync (Simulated for local offline demo)
+Unlike traditional productivity tools that rely on passive reminders, NorthStarAI proactively analyzes workloads, predicts deadline risks, generates adaptive schedules, and provides personalized guidance using Google's Gemini models.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Problem Statement
 
-### 1. Backend Setup (FastAPI)
+Students, professionals, and job seekers frequently miss deadlines because they:
 
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-2. Create and activate a Python virtual environment:
-   ```bash
-   python -m venv venv
-   # On Windows (PowerShell):
-   .\venv\Scripts\Activate.ps1
-   # On macOS/Linux:
-   source venv/bin/activate
-   ```
-3. Install the required Python packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Create a `.env` file in the `/backend` folder with your API key:
-   ```env
-   GEMINI_API_KEY=your_google_ai_studio_api_key
-   ```
-   *(Note: If no API key is provided, the backend falls back to high-fidelity mocks, so the hackathon demo works perfectly out of the box!)*
-5. Run the FastAPI development server:
-   ```bash
-   uvicorn main:app --reload --port 8000
-   ```
-   The backend will be running at `http://localhost:8000`.
+* Underestimate effort required
+* Struggle to prioritize competing tasks
+* Become overwhelmed by workload
+* Fail to adapt when schedules change
+
+Existing productivity tools remind users of deadlines.
+
+NorthStarAI helps users avoid missing them in the first place.
 
 ---
 
-### 2. Frontend Setup (Next.js)
+## ✨ Key Features
 
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
-2. Install the node dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the Next.js development server:
-   ```bash
-   npm run dev
-   ```
-   Open `http://localhost:3000` in your web browser.
+### 📄 AI Deadline Extraction
+
+Upload:
+
+* Assignment screenshots
+* PDFs
+* Email screenshots
+* Syllabus images
+
+Gemini Vision automatically extracts:
+
+* Task title
+* Deadline
+* Description
+* Estimated effort
 
 ---
 
-## 🏆 Hackathon Demo Guide
+### 🎯 Smart Prioritization Engine
 
-NorthStarAI comes with a built-in **Interactive Demo Controller** on the dashboard. It automates the 7-step presentation flow:
+Each task is evaluated using:
 
-1.  **Demo Reset**: Click "Reset Demo" on the controller. This loads two tasks: *Internship Application* (Medium, due in 3 days) and *German Practice* (Easy, due in 4 days).
-2.  **Step 1: Upload Screenshot**: Click "Simulate OCR Upload" to upload an assignment PDF/screenshot. Under the hood, Gemini extracts title, deadline, and description for a **DBMS Mini Project** due on **June 28, 2026** (6 hours estimated).
-3.  **Step 2: Auto-Add Task**: See the **DBMS Mini Project** slide onto the Kanban board and task lists.
-4.  **Step 3: AI Prioritization**: Click "AI Prioritize" to see the urgency, impact, and effort calculations, assigning DBMS a Priority Index of **92** and Internship an index of **98**.
-5.  **Step 4: AI Schedule Generation**: Generate the daily schedule. See the timeline map deep work study blocks.
-6.  **Step 5: Missed Deadline Risk Alert**: The dashboard triggers a red warning: **DBMS Assignment has a 78% risk** of delay due to insufficient hours.
-7.  **Step 6: Chat with Coach**: In the AI Coach panel, submit the message: *"I only have 2 hours today."*
-8.  **Step 7: Instant Replan**: Gemini replans instantly, allocating 1.5 hours to DBMS and 30 mins to German. The screen updates, showing the success banner: **"You are now on track to complete all deadlines."**
+* Urgency
+* Impact
+* Effort
+* Deadline proximity
+
+NorthStarAI generates a dynamic Priority Score and explains its reasoning.
+
+---
+
+### ⚠️ AI Risk Predictor
+
+Detects tasks likely to miss deadlines.
+
+Provides:
+
+* Risk percentage
+* Risk level
+* Explanations
+* Mitigation recommendations
+
+---
+
+### 📅 Adaptive Schedule Generator
+
+Creates personalized study and work plans based on:
+
+* Available hours
+* Existing commitments
+* Task effort estimates
+* Deadline constraints
+
+Schedules automatically update when circumstances change.
+
+---
+
+### 🤖 AI Coach
+
+Users can ask:
+
+* What should I work on today?
+* Replan my schedule.
+* I only have 2 hours available.
+* Which deadline is most dangerous?
+
+Responses are generated using real task data.
+
+---
+
+### 📊 Productivity Analytics
+
+Track:
+
+* Completion rates
+* Productivity score
+* Risk trends
+* Weekly performance
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                        ┌─────────────────┐
+                        │      User       │
+                        └────────┬────────┘
+                                 │
+                                 ▼
+                     ┌──────────────────────┐
+                     │ Next.js Frontend UI  │
+                     └────────┬─────────────┘
+                              │ REST API
+                              ▼
+                    ┌───────────────────────┐
+                    │ FastAPI Backend       │
+                    └────────┬──────────────┘
+                             │
+            ┌────────────────┼────────────────┐
+            ▼                ▼                ▼
+
+   ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+   │ Gemini Vision│  │ Gemini Pro   │  │ SQLite DB    │
+   │ OCR Analysis │  │ Reasoning AI │  │ Task Storage │
+   └──────────────┘  └──────────────┘  └──────────────┘
+
+            │                │
+            └────────┬───────┘
+                     ▼
+
+          Prioritization Engine
+          Risk Prediction Engine
+          Schedule Generator
+          AI Coach Responses
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer            | Technology               |
+| ---------------- | ------------------------ |
+| Frontend         | Next.js 15, TypeScript   |
+| Styling          | TailwindCSS              |
+| Backend          | FastAPI                  |
+| Database         | SQLite (Firestore Ready) |
+| ORM              | SQLAlchemy               |
+| AI Models        | Gemini 2.5 Pro           |
+| Vision OCR       | Gemini 2.5 Flash         |
+| Charts           | Recharts                 |
+| Authentication   | Google Authentication    |
+| Deployment Ready | Vercel + FastAPI         |
+
+---
+
+## 📂 Project Structure
+
+```text
+NorthStarAI/
+│
+├── backend/
+│   ├── config.py
+│   ├── database.py
+│   ├── gemini_service.py
+│   ├── main.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/app/
+│   ├── src/components/
+│   ├── src/context/
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+## 🎬 Demo Workflow
+
+### Step 1
+
+Upload assignment screenshot.
+
+### Step 2
+
+Gemini extracts:
+
+* Title
+* Deadline
+* Description
+* Estimated effort
+
+### Step 3
+
+Task is automatically created.
+
+### Step 4
+
+AI prioritizes all tasks.
+
+### Step 5
+
+Risk Predictor identifies dangerous deadlines.
+
+### Step 6
+
+Adaptive schedule is generated.
+
+### Step 7
+
+AI Coach replans workload instantly when user availability changes.
+
+---
+
+## 📈 Example Use Case
+
+User uploads:
+
+> DBMS Mini Project
+> Due: June 28
+
+NorthStarAI:
+
+✅ Extracts deadline
+
+✅ Estimates effort
+
+✅ Calculates priority score
+
+✅ Detects risk of delay
+
+✅ Generates study schedule
+
+✅ Replans if user availability changes
+
+---
+
+## 🔮 Future Scope
+
+* Real Google Calendar Integration
+* Gmail Assignment Detection
+* Mobile Application
+* Team Productivity Mode
+* Burnout Prediction Engine
+* Multi-Agent AI Planning
+* Voice Assistant Support
+
+---
+
+## 🏆 Built For
+
+Google AI Studio Hackathon
+
+Powered by Gemini 2.5 Pro and Gemini 2.5 Flash.
