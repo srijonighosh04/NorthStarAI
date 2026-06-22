@@ -182,6 +182,171 @@ NorthStarAI/
 ```
 
 ---
+## 🚀 Quick Start
+
+### Prerequisites
+
+Make sure you have installed:
+
+* Python 3.10+
+* Node.js 18+
+* npm
+* Google AI Studio API Key (optional)
+
+---
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/srijonighosh04/northstar-ai.git
+cd northstar-ai
+```
+
+---
+
+## 2️⃣ Backend Setup
+
+Navigate to the backend folder:
+
+```bash
+cd backend
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate it:
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+### macOS/Linux
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file:
+
+```env
+GEMINI_API_KEY=your_google_ai_studio_api_key
+```
+
+> If no Gemini API key is provided, NorthStarAI automatically falls back to high-fidelity simulation mode for demo purposes.
+
+Start the backend:
+
+```bash
+uvicorn main:app --reload --port 8000
+```
+
+Backend URL:
+
+```text
+http://localhost:8000
+```
+
+---
+
+## 3️⃣ Frontend Setup
+
+Open a new terminal.
+
+Navigate to the frontend folder:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Frontend URL:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 4️⃣ Verify Installation
+
+After both servers are running:
+
+* Open `http://localhost:3000`
+* Sign in using the authentication page
+* Navigate to Dashboard
+* Verify the backend status indicator shows **CONNECTED**
+* Open AI Coach and send a test prompt
+
+NorthStarAI is now ready to use.
+
+---
+
+## 🔑 Environment Variables
+
+| Variable             | Description                      |
+| -------------------- | -------------------------------- |
+| GEMINI_API_KEY       | Google AI Studio API Key         |
+| USE_FIREBASE         | Optional Firestore support       |
+| FIREBASE_CREDENTIALS | Firestore credentials (optional) |
+
+---
+
+## 🧪 Running Tests
+
+Backend tests:
+
+```bash
+cd backend
+pytest
+```
+
+Expected result:
+
+```text
+5 passed
+```
+
+---
+
+## 🏗️ Production Build
+
+Frontend:
+
+```bash
+cd frontend
+npm run build
+```
+
+Expected result:
+
+```text
+✓ Compiled successfully
+✓ TypeScript checks passed
+✓ Static pages generated
+```
 
 ## 🎬 Demo Workflow
 
