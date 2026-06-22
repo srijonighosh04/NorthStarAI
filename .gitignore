@@ -1,0 +1,28 @@
+# NorthStarAI Root gitignore
+
+# --- Backend ignores ---
+backend/venv/
+backend/northstar.db
+backend/.env
+backend/__pycache__/
+backend/.pytest_cache/
+backend/config.pyc
+
+# --- Frontend ignores ---
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.env*
+frontend/.vercel/
+frontend/next-env.d.ts
+frontend/*.tsbuildinfo
+
+# --- Miscellaneous ignores ---
+.DS_Store
+*.pem
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
