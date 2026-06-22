@@ -420,8 +420,18 @@ NorthStarAI:
 
 ---
 
-## 🏆 Built For
+## 👨‍💻 Built By
 
-Google AI Studio Hackathon
+**Srijoni Ghosh**
 
-Powered by Gemini 2.5 Pro and Gemini 2.5 Flash.
+NorthStarAI was built for **Vibe2Ship 2026**, exploring how Gemini-powered systems can move beyond passive reminders and become proactive productivity companions.
+
+### Connect
+
+* GitHub: github.com/srijonighosh04
+* LinkedIn: www.linkedin.com/in/srijoni-ghosh-ba06a9379
+
+---
+
+*"Deadlines shouldn't surprise you. NorthStarAI helps you see them coming."*
+
